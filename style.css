@@ -1,14 +1,14 @@
 .s-clock {
-    zoom: 2.5;
-    -moz-transform: scale(2.5);
-    text-align: center;
-    align-content: center;s
+    transform: scale(2.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .above-text {
     font-size: 72pt;
     font-family: helvetica;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 130px;
 }
 .done-text {
     font-size: 200pt;
