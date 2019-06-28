@@ -28,21 +28,21 @@
 				// Calculate the difference in seconds between the future and current date
 				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
 
+				//Display a message when the countdown has finished
+				if (diff <= 0) {
+					document.getElementById("main-container").style.display = "none";
+					document.getElementById("done-container").style.display = "initial";
+				}
 				// Instantiate a coutdown FlipClock
 				clock = $('.clock').FlipClock(diff, {
 					clockFace: 'DailyCounter',
 					countdown: true,
 					language: 'no',
-				});
-				
-				//Commented out temp.
-				/*if (diff <= 0) {
-					clock.stop(function() {
+					stop: function() {
 						document.getElementById("main-container").style.display = "none";
 						document.getElementById("done-container").style.display = "initial";
-					});
-				}*/
-				
+					},
+				});
 			});
 		</script>
 		
