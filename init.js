@@ -1,5 +1,5 @@
+//Init the clock
 var clock;
-
 $(document).ready(function() {
 
     // Grab the current date
