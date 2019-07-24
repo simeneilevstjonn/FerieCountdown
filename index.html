@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="flipclock.js"></script>
+		<script src="init.js"></script>
 		<meta charset="utf-8">	
 		<meta name="description" content="Nedtelling til høstferien">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,114 +16,5 @@
 			<div class="clock s-clock" style="margin:2em;"></div>
 		</div>
 		<div id="done-container" class="valign done-text" style="display: none;">Høstferie nå!</div>
-		<script type="text/javascript">
-			var clock;
-			Date.prototype.addDays = function(days) {
-				var date = new Date(this.valueOf());
-				date.setDate(date.getDate() + days);
-				return date;
-			}
-
-			$(document).ready(function() {
-
-				// Grab the current date
-				var currentDate = new Date();
-				// Set some date in the future. høstferie
-				var futureDate = new Date("Oct 4, 2019 13:15:00");
-				//define holiday date variables
-				var a19Date = new Date("Oct 4, 2019 13:15:00");
-				var c19Date = new Date("Jul 20, 2019 10:25:00");
-				var w20Date = new Date("Feb 21, 2020 13:15:00");
-				var e20Date = new Date("Apr 3, 2020 13:15:00");
-				var s20Date = new Date("Jun 19, 2020 10:25:00");
-
-				futureDate = findNextHoliday();
-
-				
-				// Calculate the difference in seconds between the future and current date
-				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
-
-				//Display a message when the countdown has finished
-				if (diff <= 0) {
-					document.getElementById("main-container").style.display = "none";
-					document.getElementById("done-container").style.display = "initial";
-				}
-				// Instantiate a coutdown FlipClock
-				clock = $('.clock').FlipClock(diff, {
-					clockFace: 'DailyCounter',
-					countdown: true,
-					language: 'no',
-					stop: function() {
-						document.getElementById("main-container").style.display = "none";
-						document.getElementById("done-container").style.display = "initial";
-					},
-				});
-				//setCountdownDate function
-				function setCountdownDate(holiday) {
-					var retDate;
-					switch (holiday) {
-						case 419:
-							document.getElementById("above-text").innerHTML = "Nedtelling til høstferien";
-							document.getElementById("done-container").innerHTML = "Høstferie nå!";
-							retDate = a19Date;
-							break;
-						case 519:
-							document.getElementById("above-text").innerHTML = "Nedtelling til juleferien";
-							document.getElementById("done-container").innerHTML = "Juleferie nå!";
-							retDate = c19Date;
-							break;
-						case 120:
-							document.getElementById("above-text").innerHTML = "Nedtelling til vinterferien";
-							document.getElementById("done-container").innerHTML = "Vinterferie nå!";
-							retDate = w20Date;
-							break;
-						case 220:
-							document.getElementById("above-text").innerHTML = "Nedtelling til påskeferien";
-							document.getElementById("done-container").innerHTML = "Juleferie nå!";
-							retDate = e20Date;
-							break;
-						case 320:
-							document.getElementById("above-text").innerHTML = "Nedtelling til sommerferien";
-							document.getElementById("done-container").innerHTML = "Sommerferie nå!";
-							retDate = s20Date;
-							break;
-						default:
-							break;
-					}		
-					
-					window.document.title = document.getElementById("above-text").innerHTML;
-					return retDate;
-				}
-				/*
-				Holiday int codes
-				1yy == winter
-				2yy == easter
-				3yy == summer
-				4yy == autumn
-				5yy == christmas
-				*/
-				function findNextHoliday() {
-					if (currentDate < a19Date.addDays(2)) {
-						//setCountdownDate(419);
-						
-						document.getElementById("above-text").innerHTML = "Nedtelling til høstferien";
-						document.getElementById("done-container").innerHTML = "Høstferie nå!";
-						return a19Date;
-					}
-					else if (currentDate < c19Date.addDays(2)) {
-						setCountdownDate(519);
-					}
-					else if (currentDate < w20Date.addDays(2)) {
-						setCountdownDate(120);
-					}
-					else if (currentDate < e20Date.addDays(2)) {
-						setCountdownDate(220);
-					}
-					else if (currentDate < s20Date.addDays(2)) {
-						setCountdownDate(320);
-					}
-				}
-			});
-		</script>
 	</body>
 </html>
