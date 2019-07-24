@@ -1,9 +1,11 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="flipclock.css">
-        	<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="flipclock.js"></script>
+		<script src="init.js"></script>
+		
 		<meta charset="utf-8">	
 		<meta name="description" content="Nedtelling til høstferien">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,39 +14,14 @@
 	<body>
 		<div class="valign" id="main-container">
 			<p class="above-text">Nedtelling til høstferien</p>
-			<div class="clock s-clock" style="margin:2em;"></div>
+			<div class="clock" style="margin:2em;" id="clock"></div>
+			<script>
+				//Set scaling based on screen resolution
+				let perpx = 2.5/1920;
+				let ratio = perpx * window.screen.width;
+				document.getElementById('clock').style.transform = "scale(" + ratio + ")";
+			</script>
 		</div>
 		<div id="done-container" class="valign done-text" style="display: none;">Høstferie nå!</div>
-		<script type="text/javascript">
-			var clock;
-
-			$(document).ready(function() {
-
-				// Grab the current date
-				var currentDate = new Date();
-
-				// Set some date in the future. høstferie
-				var futureDate  = new Date("Oct 4, 2019 13:15:00");
-				// Calculate the difference in seconds between the future and current date
-				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
-
-				//Display a message when the countdown has finished
-				if (diff <= 0) {
-					document.getElementById("main-container").style.display = "none";
-					document.getElementById("done-container").style.display = "initial";
-				}
-				// Instantiate a coutdown FlipClock
-				clock = $('.clock').FlipClock(diff, {
-					clockFace: 'DailyCounter',
-					countdown: true,
-					language: 'no',
-					stop: function() {
-						document.getElementById("main-container").style.display = "none";
-						document.getElementById("done-container").style.display = "initial";
-					},
-				});
-			});
-		</script>
-		
 	</body>
 </html>
