@@ -20,6 +20,7 @@ $(document).ready(function() {
         clockFace: 'DailyCounter',
         countdown: true,
         language: 'no',
+        responsiveScale: 4,
         stop: function() {
             document.getElementById("main-container").style.display = "none";
             document.getElementById("done-container").style.display = "initial";
