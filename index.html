@@ -5,17 +5,30 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="flipclock.js"></script>
 		<script src="init.js?v=190819-1"></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138743911-4"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-138743911-4');
+		</script>
+
 		
 		<meta charset="utf-8">	
-		<meta name="description" content="Nedtelling til høstferien">
+		<meta name="description" content="Nedtelling til skoleferier i Sandnes">
+		<meta name="keywords" content="Nedtelling,Ferie,Sandnes,Skoleferie,Skole,Høstferie">
+		<meta name="author" content="Simen Eilevstjønn">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>FerieCountdown</title>
 	</head>
 	<body>
 		<div class="valign" id="main-container">
-			<p id="above-text"><!--Nedtelling til høstferien--></p>
+			<p id="above-text"></p>
 			<div class="clock" style="margin:2em;" id="clock"></div>
 		</div>
-		<div id="done-container" class="valign done-text" style="display: none;"><!--Høstferie nå!--></div>
+		<div id="done-container" class="valign done-text" style="display: none;"></div>
 	</body>
 </html>
