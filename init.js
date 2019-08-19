@@ -18,9 +18,9 @@ class Holiday {
 let holidays = [
 new Holiday(new Date("Oct 4, 2019 13:15:00"), "Nedtelling til høstferien", "Høstferie nå!"), 
 new Holiday(new Date("Dec 21, 2019 10:25:00"), "Nedtelling til juleferien", "Juleferie nå!"),
-new Holiday(new Date("Feb 21, 2019 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!"),
-new Holiday(new Date("Apr 3, 2019 13:15:00"), "Nedtelling til påskeferien", "Påskeferie nå!"),
-new Holiday(new Date("Jun 19, 2019 10:25:00"), "Nedtelling til sommerferien", "Sommerferie nå!")
+new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!"),
+new Holiday(new Date("Apr 3, 2020 13:15:00"), "Nedtelling til påskeferien", "Påskeferie nå!"),
+new Holiday(new Date("Jun 19, 2020 10:25:00"), "Nedtelling til sommerferien", "Sommerferie nå!")
 ];
 
 function findClosestHoliday() {
@@ -46,9 +46,35 @@ $(document).ready(function() {
     // Grab the current date
     var currentDate = new Date();
 
-    // Set some date in the future. høstferie
-    //var futureDate  = new Date("Oct 4, 2019 13:15:00");
+    //Select a holiday 
     var selholiday = findClosestHoliday();
+
+    //Check if query string auto holiday override has been provided
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("holiday")) {
+        var hdarrayindex;
+        switch (urlParams.get("holiday")) {
+            case "a19":
+                hdarrayindex = 0;
+                break;
+            case "c19":
+                hdarrayindex = 1;
+                break;
+            case "w20":
+                hdarrayindex = 2;
+                break;
+            case "e20":
+                hdarrayindex = 3;
+                break;
+            case "s20":
+                hdarrayindex = 4;
+                break;    
+        }
+        selholiday = holidays[hdarrayindex];
+    }
+
+
+    // Setup countdown using selected holiday
     var futureDate = selholiday.DateTime;
     selholiday.PrintStrings();
 
