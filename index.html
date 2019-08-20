@@ -2,10 +2,14 @@
 	<head>
 		<link rel="stylesheet" href="flipclock.css">
 		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
 		<link rel="icon" href="favicon.ico">
+		<link rel="cannonical" href="https://www.feriecountdown.com/">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="flipclock.js"></script>
 		<script src="init.js?v=190819-1"></script>
+		<script src="options.js"></script>
+		
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138743911-4"></script>
@@ -31,5 +35,45 @@
 			<div class="clock" style="margin:2em;" id="clock"></div>
 		</div>
 		<div id="done-container" class="valign done-text" style="display: none;"></div>
+
+		<div class="bottommiddle" style="text-align: center;width:100%">
+			<button class="button optionsbutton" id="optionsbutton" onclick="ToggleOptions()"><i class="fas fa-angle-up" id="optionsbuttonfa"></i></button>
+
+			<div id="options" style="display: none;width: 100% !important;text-align: justify;">
+				<form method="GET" name="options">
+					<div class="colonethird">
+						<h2>Nedtellingstype</h2>
+						<p>
+							
+							<select name="type" onchange="SetVariableForm(this.selectedIndex)">
+								<option selected>Ferie</option>
+								<option>Nyttår</option>
+								<option>Bursdag</option>
+							</select>
+						</p>
+					</div>
+					<div class="colonethird">
+						<h2>Variabler</h2>
+						<p id="variables">
+							<input type="radio" name="holiday" value="auto" checked> Auto<br>
+							<input type="radio" name="holiday" value="a19"> Høstferie 2019<br>
+							<input type="radio" name="holiday" value="c19"> Juleferie 2019<br>
+							<input type="radio" name="holiday" value="w20"> Vinterferie 2020<br>
+							<input type="radio" name="holiday" value="e20"> Påskeferie 2020<br>
+							<input type="radio" name="holiday" value="s20"> Sommerferie 2020
+						</p>
+					</div>
+					<div class="colonethird">
+						<h2>Bakgrunn</h2>
+						<p>
+							<input type="radio" name="bg" value="animated" checked> Animert bakgrunn (hvis tilgjengelig)<br>
+							<input type="radio" name="bg" value="static"> Statisk bilde<br>
+							<input type="radio" name="bg" value="plain"> Hvit bakgrunn<br>
+						</p>
+					</div>
+					<input type="submit" value="Lagre Innstillinger" class="button submitbutton">
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
