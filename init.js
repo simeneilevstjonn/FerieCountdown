@@ -1,26 +1,56 @@
 //Generate a holiday class
 class Holiday {
     //Constructor
-    constructor(DateTime, CountdownNameString, CountdownFinishedString) {
+    constructor(DateTime, CountdownNameString, CountdownFinishedString, StaticBg, AnimatedBg) {
         this.DateTime = DateTime;
         this.CountdownNameString = CountdownNameString;
         this.CountdownFinishedString = CountdownFinishedString;
+        this.StaticBg = StaticBg;
+        this.AnimatedBg = AnimatedBg;
     }
 
     //Method for printing strings
     PrintStrings() {
         document.getElementById("above-text").innerHTML = this.CountdownNameString;
         document.getElementById("done-container").innerHTML = this.CountdownFinishedString;
+        window.document.title = this.CountdownNameString + " - FerieCountdown";
+    }
+}
+
+//Generate background object
+class Background {
+    //Constructor
+    constructor(Type, Url, SetCCCText) {
+        this.Type = Type;
+        this.Url = Url;
+        this.SetCCCText = SetCCCText;
+    }
+
+    //Method for applying background
+    SetBg() {
+        if (this.Type == "static") {
+            var b = document.getElementsByTagName("body")[0];
+            b.style.backgroundImage = "url(" + this.Url + ")";
+            b.style.backgroundPosition = "center";
+            b.style.backgroundRepeat = "no-repeat";
+            b.style.backgroundAttachment = "fixed";
+        }
+        if (this.SetCCCText) {
+            document.getElementById("above-text").style.color = "#ccc";
+            document.getElementById("done-container").style.color = "#ccc";
+            document.getElementById("optionsbuttonfa").style.color = "#ccc";
+            document.getElementsByTagName("head")[0].innerHTML += "<style>.flip-clock-label{color:#ccc!important}</style>";
+        }
     }
 }
 
 //Generate holiday objects
 let holidays = [
-new Holiday(new Date("Oct 4, 2019 13:15:00"), "Nedtelling til høstferien", "Høstferie nå!"), 
-new Holiday(new Date("Dec 21, 2019 10:25:00"), "Nedtelling til juleferien", "Juleferie nå!"),
-new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!"),
-new Holiday(new Date("Apr 3, 2020 13:15:00"), "Nedtelling til påskeferien", "Påskeferie nå!"),
-new Holiday(new Date("Jun 19, 2020 10:25:00"), "Nedtelling til sommerferien", "Sommerferie nå!")
+new Holiday(new Date("Oct 4, 2019 13:15:00"), "Nedtelling til høstferien", "Høstferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true), new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true)), 
+new Holiday(new Date("Dec 21, 2019 10:25:00"), "Nedtelling til juleferien", "Juleferie nå!", null, null),
+new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!", null, null),
+new Holiday(new Date("Apr 3, 2020 13:15:00"), "Nedtelling til påskeferien", "Påskeferie nå!", null, null),
+new Holiday(new Date("Jun 19, 2020 10:25:00"), "Nedtelling til sommerferien", "Sommerferie nå!", null, null)
 ];
 
 function findClosestHoliday() {
@@ -51,7 +81,7 @@ $(document).ready(function() {
 
     //Check if query string auto holiday override has been provided
     var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("holiday")) {
+    if (urlParams.has("holiday") && urlParams.get("holiday") != "auto") {
         var hdarrayindex;
         switch (urlParams.get("holiday")) {
             case "a19":
@@ -71,6 +101,46 @@ $(document).ready(function() {
                 break;    
         }
         selholiday = holidays[hdarrayindex];
+    }
+
+    //Check if a custom type has been provided
+    if (urlParams.has("type")) {
+        var hd;
+        switch (urlParams.get("type")) {
+            case "Nyttår":
+                hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "Nyttår nå!", null, null);
+                break;  
+            case "Bursdag":
+                if (urlParams.has("personname") && urlParams.has("date")) {
+                    hd = new Holiday(new Date(urlParams.get("date")), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", null, null);
+                }
+                break;
+        }
+        selholiday = hd;
+    }
+
+
+    //Check if a background ovveride has been provided
+    var bgtype = null;
+    if (urlParams.has("bg")) {
+        bgtype = urlParams.get("bg");
+    }
+    switch (bgtype) {
+        case "static":
+            if (selholiday.StaticBg != null) {
+                selholiday.StaticBg.SetBg()
+            }
+            break;
+        case "plain":
+            break;
+        default:
+            if (selholiday.AnimatedBg != null) {
+                selholiday.AnimatedBg.SetBg()
+            }
+            else if (selholiday.StaticBg != null) {
+                selholiday.StaticBg.SetBg()
+            }
+            break;
     }
 
 

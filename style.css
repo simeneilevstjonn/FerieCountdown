@@ -23,3 +23,69 @@
 body {
     overflow: hidden;
 }
+/*
+ * Bottommidle and button taken from W3.css
+ * https://www.w3schools.com/w3css/4/w3.css
+ */
+.bottommiddle {
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translate(-50%,0%);
+    -ms-transform:translate(-50%,0%);
+}
+.button {
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:inherit;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+.button:disabled {
+    cursor:not-allowed;
+    opacity:0.3;
+}
+.button:hover{
+    color:#000!important;
+    background-color:#ccc!important
+}
+.optionsbutton {
+    font-size: 24px
+}
+#options {
+    width:100%;
+    background-color:#333;
+    color:#ccc;
+    padding: 16px;
+    text-align: center;
+    font-size: 18px;
+
+}
+.colonethird {
+    width: 33%;
+    display: inline-block;
+    color: inherit;
+    background-color: inherit;
+    vertical-align: top;
+}
+.submitbutton {
+    background-color:#2196F3!important;
+    color: #fff!important;
+    display: block;
+    width: 200px;
+    height: 75px;
+    font-size: 18px;
+    margin: 0 auto;
+}
