@@ -3,12 +3,13 @@
 		<link rel="stylesheet" href="flipclock.css">
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 		<link rel="icon" href="favicon.ico">
 		<link rel="cannonical" href="https://www.feriecountdown.com/">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="flipclock.js"></script>
 		<script src="init.js?v=210819-1"></script>
-		<script src="options.js"></script>
+		<script src="options2.js"></script>
 		
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -72,9 +73,33 @@
 						</p>
 					</div>
 					<input type="submit" value="Lagre Innstillinger" class="button submitbutton">
+					<div class="links">
+						<a href="https://github.com/simeneilevstjonn/FerieCountdown" title="FerieCountdown på GitHub" target="_blank"><i class="fab fa-github"></i></a>
+					</div>
 				</form>
 			</div>
 		</div>
+		<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+		<script>
+			window.cookieconsent.initialise({
+				"palette": {
+				"popup": {
+					"background": "#333333",
+					"text": "#cccccc"
+				},
+				"button": {
+					"background": "#2196f3",
+					"text": "#000"
+				}
+				},
+				"content": {
+				"message": "Denne nettsiden nettsiden bruker cookies for å sikre en best mulig brukeropplevelse",
+				"dismiss": "Det er greit!",
+				"link": "Les mer",
+				"href": "/info#cookie"
+				}
+			});
+		</script>
 	</body>
 </html>
 

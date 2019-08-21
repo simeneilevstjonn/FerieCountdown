@@ -89,8 +89,29 @@ body {
     font-size: 18px;
     margin: 0 auto;
 }
+.links {
+    text-align: right;
+    margin-right: 64px;
+    margin-left: 64px;
+    font-size: 18px;
+} 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.cc-banner {
+    background-color: #333!important;
+    color: #ccc!important;
+}
+.dismiss.coockie.message {
+    background-color: #2196f3!important;
+    color: #000!important;
+}
+table, th, td {
+    border: 1px solid black;
+  }
 @media (max-width: 600px) {
-    .mobile, .colonethird {
+    .mobile, .colonethird, .links {
         display:block!important;
         width:100%!important;
     }
