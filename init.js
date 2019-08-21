@@ -1,3 +1,5 @@
+//Init.js V 21.08.19-1
+//Author: Simen Eilevstjønn
 //Generate a holiday class
 class Holiday {
     //Constructor
@@ -105,7 +107,7 @@ $(document).ready(function() {
 
     //Check if a custom type has been provided
     if (urlParams.has("type")) {
-        var hd;
+        var hd = selholiday;
         switch (urlParams.get("type")) {
             case "Nyttår":
                 hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "Nyttår nå!", null, null);
