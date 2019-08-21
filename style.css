@@ -89,3 +89,23 @@ body {
     font-size: 18px;
     margin: 0 auto;
 }
+@media (max-width: 600px) {
+    .mobile, .colonethird {
+        display:block!important;
+        width:100%!important;
+    }
+    .optionscontainer {
+        background-color: #333;
+    }
+    #above-text {
+        font-size: 350%!important;
+    }
+    #done-container {
+        font-size: 450%!important;
+    }
+    .clock {
+        transform: scale(0.9)!important;
+        margin-left: auto!important;
+        margin-right: auto!important;
+    }
+}
