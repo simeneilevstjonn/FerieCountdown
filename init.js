@@ -69,6 +69,25 @@ function findClosestHoliday() {
     return selected
 }
 
+//birthday validation
+function bdayValiDATE(dateparam) {
+    let now = new Date();
+    let date = new Date(dateparam);
+    if (date.getTime() + 24 * 60 * 60 * 1000 > now.getTime()) {
+        return date;
+    }
+    else {
+        let y = date.getFullYear() + 1;
+        let ny = now.getFullYear();
+        if (y < ny) {
+            return bdayValiDATE(date.setFullYear(ny));
+        }
+        else {
+            return bdayValiDATE(date.setFullYear(y));
+        }
+    }
+}
+
 
 
 //Init the clock
@@ -110,11 +129,11 @@ $(document).ready(function() {
         var hd = selholiday;
         switch (urlParams.get("type")) {
             case "Nyttår":
-                hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "Nyttår nå!", null, null);
+                hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "2020 nå!", null, null);
                 break;  
             case "Bursdag":
                 if (urlParams.has("personname") && urlParams.has("date")) {
-                    hd = new Holiday(new Date(urlParams.get("date")), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", null, null);
+                    hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", null, null);
                 }
                 break;
         }
