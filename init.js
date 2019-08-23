@@ -1,4 +1,4 @@
-//Init.js V 21.08.19-1
+//Init.js V 23.08.19-1
 //Author: Simen Eilevstjønn
 //Generate a holiday class
 class Holiday {
