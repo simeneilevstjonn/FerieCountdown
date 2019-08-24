@@ -25,12 +25,12 @@ function RenderMyCDS() {
     var cds = localStorage.getItem("mycds");
     var arr = JSON.parse(cds);
     var list = document.getElementById("mcdslist");
-    list.innerHTML = "";
+    list.innerHTML = '';
     if (arr != null) {
         var i = 0;
         arr.forEach(function(obj) {
             if (obj != null) {
-                list.innerHTML += '<li><a href="' + obj.href + '">' + obj.name + '</a><a href="javascript:void(0)" onclick="DeleteMCD(' + i + ')" class="delbtn">&nbsp;<i class="fas fa-trash"></i></li>';
+                list.innerHTML += '<li class="list-group-item"><a href="' + obj.href + '">' + obj.name + '</a><a href="javascript:void(0)" onclick="DeleteMCD(' + i + ')" class="delbtn">&nbsp;<i class="fas fa-trash"></i></a></li>';
             }
             i++;
         });

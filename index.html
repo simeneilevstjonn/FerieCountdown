@@ -3,6 +3,8 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="flipclock.css">
 		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="form.css">
+		<link rel="stylesheet" href="https://use.typekit.net/usk3mry.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
 		<link rel="icon" href="favicon.ico">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -10,6 +12,7 @@
 		<script src="init.js"></script>
 		<script src="options2.js"></script>
 		<script src="mycountdowns.js"></script>
+
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>FerieCountdown</title>
@@ -28,10 +31,18 @@
 					<button onclick="ToggleMyCDS()" class="button"><i class="fas fa-times"></i></button>
 				</h2>
 				<br>
-				<input type="text" id="mcdtitle" placeholder="Navn"> <button onclick="AddMCD()" class="button addbutton">Legg til</button>
+				<div class="form-group">
+					<label for="mcdtitle" style="font-size: 18px">Navn til lagring</label>
+					<input class="form-control" type="text" id="mcdtitle" placeholder="Navn på Countdown">
+				</div>
+				<div style="text-align: center">
+					<button onclick="AddMCD()" class="button addbutton">Legg til</button>
+				</div>
+				
+				
 				<br>
-				<ul id="mcdslist">
-
+				<ul id="mcdslist" class="list-group">
+					
 				</ul>
 			</div>
 			<button class="button optionsbutton" id="mycdsbutton" onclick="ToggleMyCDS()"><i class="fas fa-angle-right" id="mycdsbuttonfa"></i></button>
@@ -40,38 +51,38 @@
 		<div class="bottommiddle optionscontainer">
 			<button class="button optionsbutton" id="optionsbutton" onclick="ToggleOptions()"><i class="fas fa-angle-up" id="optionsbuttonfa"></i></button>
 
-			<div id="options" style="display: none;width: 100% !important;text-align: justify;">
+			<div id="options" style="display: none">
 				<button onclick="ToggleOptions()" class="button optionsxbutton"><i class="fas fa-times"></i></button>
 				
 				<form method="GET" name="options">
-					<div class="colonethird">
-						<h2>Nedtellingstype</h2>
-						<p>
-							<select name="type" onchange="SetVariableForm(this.selectedIndex)">
-								<option selected>Ferie</option>
-								<option>Nyttår</option>
-								<option>Bursdag</option>
+					<div class="form-group">
+						<label for="typeSelect">Nedtellingstype</label>
+						<select class="form-control" id="typeSelect" name="type" onchange="SetVariableForm(this.selectedIndex)">
+							<option value="holiday" selected>Ferie</option>
+							<option value="newyear">Nyttår</option>
+							<option value="birthday">Bursdag</option>
+						</select>
+					</div>
+					<div id="variables">
+						<div class="form-group">
+							<label for="holidaySelect">Ferie</label>
+							<select class="form-control" id="holidaySelect" name="holiday">
+								<option value="auto" selected>Auto</option>
+								<option value="a19">Høstferie 2019</option>
+								<option value="c19">Juleferie 2019</option>
+								<option value="w20">Vinterferie 2020</option>
+								<option value="e20">Påskeferie 2020</option>
+								<option value="s20">Sommerferie 2020</option>
 							</select>
-						</p>
+						</div>
 					</div>
-					<div class="colonethird">
-						<h2>Variabler</h2>
-						<p id="variables">
-							<input type="radio" name="holiday" value="auto" checked> Auto<br>
-							<input type="radio" name="holiday" value="a19"> Høstferie 2019<br>
-							<input type="radio" name="holiday" value="c19"> Juleferie 2019<br>
-							<input type="radio" name="holiday" value="w20"> Vinterferie 2020<br>
-							<input type="radio" name="holiday" value="e20"> Påskeferie 2020<br>
-							<input type="radio" name="holiday" value="s20"> Sommerferie 2020
-						</p>
-					</div>
-					<div class="colonethird">
-						<h2>Bakgrunn</h2>
-						<p>
-							<input type="radio" name="bg" value="animated" checked> Animert bakgrunn (hvis tilgjengelig)<br>
-							<input type="radio" name="bg" value="static"> Statisk bilde<br>
-							<input type="radio" name="bg" value="plain"> Hvit bakgrunn<br>
-						</p>
+					<div class="form-group">
+						<label for="bgSelect">Bakgrunn</label>
+						<select class="form-control" id="bgSelect" name="bg">
+							<option value="animated" selected>Animert bakgrunn (hvis tilgjengelig)</option>
+							<option value="static">Statisk bilde</option>
+							<option value="plain">Hvit bakgrunn</option>
+						</select>
 					</div>
 					<input type="submit" value="Lagre Innstillinger" class="button submitbutton">
 				</form>
