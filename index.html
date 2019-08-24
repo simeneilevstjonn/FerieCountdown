@@ -9,6 +9,7 @@
 		<script src="flipclock.js"></script>
 		<script src="init.js?v=210819-1"></script>
 		<script src="options2.js"></script>
+		<script src="mycountdowns.js"></script>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>FerieCountdown</title>
@@ -20,17 +21,32 @@
 		</div>
 		<div id="done-container" class="valign done-text" style="display: none;"></div>
 
-		<div class="bottommiddle optionscontainer" style="text-align: center;width:100%">
+		<div class="left mycdscontainer">
+			<div class="mycds" id="mycds" style="display:none">
+				<h2>
+					Mine Countdowner
+					<button onclick="ToggleMyCDS()" class="button"><i class="fas fa-times"></i></button>
+				</h2>
+				<br>
+				<input type="text" id="mcdtitle" placeholder="Navn"> <button onclick="AddMCD()" class="button addbutton">Legg til</button>
+				<br>
+				<ul id="mcdslist">
+					
+				</ul>
+			</div>
+			<button class="button optionsbutton" id="mycdsbutton" onclick="ToggleMyCDS()"><i class="fas fa-angle-right" id="mycdsbuttonfa"></i></button>
+		</div>
+
+		<div class="bottommiddle optionscontainer">
 			<button class="button optionsbutton" id="optionsbutton" onclick="ToggleOptions()"><i class="fas fa-angle-up" id="optionsbuttonfa"></i></button>
 
 			<div id="options" style="display: none;width: 100% !important;text-align: justify;">
-				<button onclick="ToggleOptions()" class="button" style="margin-left: auto; display:block; margin-right: 16px"><i class="fas fa-times"></i></button>
+				<button onclick="ToggleOptions()" class="button optionsxbutton"><i class="fas fa-times"></i></button>
 				
 				<form method="GET" name="options">
 					<div class="colonethird">
 						<h2>Nedtellingstype</h2>
 						<p>
-							
 							<select name="type" onchange="SetVariableForm(this.selectedIndex)">
 								<option selected>Ferie</option>
 								<option>Nyttår</option>

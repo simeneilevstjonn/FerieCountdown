@@ -73,6 +73,10 @@ body {
     font-size: 18px;
 
 }
+.optionscontainer {
+    text-align: center;
+    width: 100%
+}
 .colonethird {
     width: 33%;
     display: inline-block;
@@ -89,8 +93,53 @@ body {
     font-size: 18px;
     margin: 0 auto;
 }
+.addbutton {
+    background-color:#2196F3!important;
+    color: #fff!important;
+}
+.left {
+    position:absolute;
+    top:50%;
+    left:0%;
+    transform:translate(0%,-50%);
+    -ms-transform:translate(-0%,-50%)
+}
+.mycdscontainer, .mycds {
+    height: 100%;
+}
+.mycdscontainer {
+    vertical-align: middle;
+}
+.optionsxbutton {
+    margin-left: auto;
+    display:block;
+    margin-right: 16px
+}
+.mycds {
+    background-color: #333;
+    color: #ccc;
+    padding: 24px;
+    overflow-y: scroll;
+}
+#mycdsbutton {
+    display: block;
+    position: relative;
+    top: 50%;
+
+}
+#mcdslist li a {
+    color: #ccc;
+    text-decoration: none;
+}
+#mcdlist {
+    list-style: none!important;
+}
+.delbtn {
+    color: red!important;
+}
+
 @media (max-width: 600px) {
-    .mobile, .colonethird {
+    .mobile, .colonethird, .mycdscontainer {
         display:block!important;
         width:100%!important;
     }

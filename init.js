@@ -41,6 +41,7 @@ class Background {
             document.getElementById("above-text").style.color = "#ccc";
             document.getElementById("done-container").style.color = "#ccc";
             document.getElementById("optionsbuttonfa").style.color = "#ccc";
+            document.getElementById("mycdsbuttonfa").style.color = "#ccc";
             document.getElementsByTagName("head")[0].innerHTML += "<style>.flip-clock-label{color:#ccc!important}</style>";
         }
     }
