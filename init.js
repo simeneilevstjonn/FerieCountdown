@@ -41,6 +41,7 @@ class Background {
             document.getElementById("above-text").style.color = "#ccc";
             document.getElementById("done-container").style.color = "#ccc";
             document.getElementById("optionsbuttonfa").style.color = "#ccc";
+            document.getElementById("mycdsbuttonfa").style.color = "#ccc";
             document.getElementsByTagName("head")[0].innerHTML += "<style>.flip-clock-label{color:#ccc!important}</style>";
         }
     }
@@ -129,9 +130,11 @@ $(document).ready(function() {
         var hd = selholiday;
         switch (urlParams.get("type")) {
             case "Nyttår":
+            case "newyear":
                 hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "2020 nå!", null, null);
                 break;  
             case "Bursdag":
+            case "birthday":
                 if (urlParams.has("personname") && urlParams.has("date")) {
                     hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", null, null);
                 }

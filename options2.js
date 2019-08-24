@@ -15,13 +15,13 @@ function SetVariableForm(type) {
     var v = document.getElementById("variables");
     switch (type) {
         case 0:
-            v.innerHTML = '<input type="radio" name="holiday" value="auto" checked> Auto<br><input type="radio" name="holiday" value="a19"> Høstferie 2019<br><input type="radio" name="holiday" value="c19"> Juleferie 2019<br><input type="radio" name="holiday" value="w20"> Vinterferie 2020<br><input type="radio" name="holiday" value="e20"> Påskeferie 2020<br><input type="radio" name="holiday" value="s20"> Sommerferie 2020';
+            v.innerHTML = '<div class="form-group"><label for="holidaySelect">Ferie</label><select class="form-control" id="holidaySelect" name="holiday"><option value="auto" selected>Auto</option><option value="a19">Høstferie 2019</option><option value="c19">Juleferie 2019</option><option value="w20">Vinterferie 2020</option><option value="e20">Påskeferie 2020</option><option value="s20">Sommerferie 2020</option></select></div>';
             break;
         case 1:
             v.innerHTML = "";
             break;
         case 2:
-            v.innerHTML = '<input type="type" name="personname" placeholder="Navn på person med bursdag" style="width: 200px"><br>Bursdagsdato:<br><input type="date" name="date" style="width: 200px">';
+            v.innerHTML = '<div class="form-group"><label for="personname">Navn på person med bursdag</label><input class="form-control" type="text" name="personname" id="personname" placeholder="John Doe"></div><div class="form-group"><label for="dateselector">Bursdagsdato</label><input class="form-control" type="date" name="date" id="dateselector"></div>';
             break;
     }
 }
