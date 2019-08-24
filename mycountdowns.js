@@ -58,7 +58,7 @@ function DeleteMCD(index) {
     if (arr == null) {
         return
     }
-    arr[index] = null;
+    arr.splice(index, 1);
     localStorage.setItem("mycds", JSON.stringify(arr));
     RenderMyCDS();
 }
