@@ -22,20 +22,21 @@ class Holiday {
 //Generate background object
 class Background {
     //Constructor
-    constructor(Type, Url, SetCCCText) {
+    constructor(Type, Data, SetCCCText) {
         this.Type = Type;
-        this.Url = Url;
+        this.Data = Data;
         this.SetCCCText = SetCCCText;
     }
 
     //Method for applying background
     SetBg() {
         if (this.Type == "static") {
-            var b = document.getElementsByTagName("body")[0];
-            b.style.backgroundImage = "url(" + this.Url + ")";
-            b.style.backgroundPosition = "center";
-            b.style.backgroundRepeat = "no-repeat";
-            b.style.backgroundAttachment = "fixed";
+            this.SetStatic(this.Data);
+        }
+        else if (this.Type == "staticcssbody") {
+            document.getElementsByTagName("head")[0].innerHTML += "<style>" + this.Data[1] + "</style>";
+            document.getElementsByTagName("body")[0].innerHTML += this.Data[2];
+            this.SetStatic(this.Data[0])
         }
         if (this.SetCCCText) {
             document.getElementById("above-text").style.color = "#ccc";
@@ -45,13 +46,22 @@ class Background {
             document.getElementsByTagName("head")[0].innerHTML += "<style>.flip-clock-label{color:#ccc!important}</style>";
         }
     }
+
+    SetStatic(url) {
+        var b = document.getElementsByTagName("body")[0];
+        b.style.backgroundImage = "url(" + url + ")";
+        b.style.backgroundPosition = "center";
+        b.style.backgroundRepeat = "no-repeat";
+        b.style.backgroundAttachment = "fixed";
+    }
 }
 
 //Generate holiday objects
 let holidays = [
 new Holiday(new Date("Oct 4, 2019 13:15:00"), "Nedtelling til høstferien", "Høstferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true), new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true)), 
 new Holiday(new Date("Dec 21, 2019 10:25:00"), "Nedtelling til juleferien", "Juleferie nå!", null, null),
-new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!", null, null),
+//animated snow css by Justin Patrick Schwinghamer on Codepen https://codepen.io/jpschwinghamer/pen/QwwbgO
+new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/w20/static.jpg", false), new Background("staticcssbody", ["https://static.feriecountdown.com/resources/background/w20/static.jpg", ".snow-container{position:absolute;height:80%;width:100%;max-width:100%;top:0;overflow:hidden;z-index:2;pointer-events:none}.snow{display:block;position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;pointer-events:none;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);-webkit-animation:snow linear infinite;animation:snow linear infinite}.snow.foreground{background-image:url(https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-large-075d267ecbc42e3564c8ed43516dd557.png);-webkit-animation-duration:15s;animation-duration:15s}.snow.foreground.layered{-webkit-animation-delay:7.5s;animation-delay:7.5s}.snow.middleground{background-image:image-url(https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-medium-0b8a5e0732315b68e1f54185be7a1ad9.png);-webkit-animation-duration:20s;animation-duration:20s}.snow.middleground.layered{-webkit-animation-delay:10s;animation-delay:10s}.snow.background{background-image:image-url(https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-small-1ecd03b1fce08c24e064ff8c0a72c519.png);-webkit-animation-duration:30s;animation-duration:30s}.snow.background.layered{-webkit-animation-delay:15s;animation-delay:15s}@-webkit-keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}@keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}",'<div class="snow-container"><div class="snow foreground"></div><div class="snow foreground layered"></div><div class="snow middleground"></div><div class="snow middleground layered"></div><div class="snow background"></div><div class="snow background layered"></div></div>'], false)),
 new Holiday(new Date("Apr 3, 2020 13:15:00"), "Nedtelling til påskeferien", "Påskeferie nå!", null, null),
 new Holiday(new Date("Jun 19, 2020 10:25:00"), "Nedtelling til sommerferien", "Sommerferie nå!", null, null)
 ];
