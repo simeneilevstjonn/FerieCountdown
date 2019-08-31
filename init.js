@@ -14,7 +14,7 @@ class Holiday {
     //Method for printing strings
     PrintStrings() {
         document.getElementById("above-text").innerHTML = this.CountdownNameString;
-        document.getElementById("done-container").innerHTML = this.CountdownFinishedString;
+        document.getElementById("done-text").innerHTML = this.CountdownFinishedString;
         window.document.title = this.CountdownNameString + " - FerieCountdown";
     }
 }
@@ -40,7 +40,7 @@ class Background {
         }
         if (this.SetCCCText) {
             document.getElementById("above-text").style.color = "#ccc";
-            document.getElementById("done-container").style.color = "#ccc";
+            document.getElementById("done-text").style.color = "#ccc";
             document.getElementById("optionsbuttonfa").style.color = "#ccc";
             document.getElementById("mycdsbuttonfa").style.color = "#ccc";
             document.getElementsByTagName("head")[0].innerHTML += "<style>.flip-clock-label{color:#ccc!important}</style>";
@@ -83,6 +83,61 @@ function findClosestHoliday() {
     });
     return selected
 }
+
+//get next weekend
+function getWeekend() {
+    let today = new Date();
+    let day = today.getDay();
+    switch (day) {
+        case 0:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()-2, 13, 15);
+        case 1:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+4, 13, 15);
+        case 2:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+3, 13, 15);
+        case 3:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+2, 13, 15);
+        case 4:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+1, 13, 15);
+        case 5:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 15);
+        case 6:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()-1, 13, 15);
+    }
+}
+
+//get weekday end
+function getDayEnd() {
+    let today = new Date();
+    let day = today.getDay();
+    switch (day) {
+        case 6:
+        case 0:
+            return 0;
+        case 1:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
+        case 2:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 15);
+        case 3:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
+        case 4:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
+        case 5:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 15);
+    }
+}
+
+//generate dayend Holiday object
+function getDayEndObj() {
+    let de = getDayEnd();
+    if (de != 0) {
+        return new Holiday(de, "Skoledagen slutter om:", "Skoledagen er slutt!", null, null);
+    }
+    else {
+        return new Holiday(new Date(0), null, "Nå er det helg!", null, null);
+    }
+}
+
 
 //birthday validation
 function bdayValiDATE(dateparam) {
@@ -153,6 +208,11 @@ $(document).ready(function() {
                     hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", null, null);
                 }
                 break;
+            case "dayend":
+                hd = getDayEndObj();
+                break;
+            case "weekend":
+                hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", null, null);
         }
         selholiday = hd;
     }

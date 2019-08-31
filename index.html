@@ -35,7 +35,7 @@
 			<p id="above-text"></p>
 			<div class="clock" style="margin:2em;" id="clock"></div>
 		</div>
-		<div id="done-container" class="valign done-text" style="display: none;"></div>
+		<div id="done-container" class="valign" style="display: none;"><p id="done-text"></p></div>
 
 		<div class="left mycdscontainer">
 			<div class="mycds" id="mycds" style="display:none">
@@ -72,6 +72,8 @@
 						<label for="typeSelect">Nedtellingstype</label>
 						<select class="form-control" id="typeSelect" name="type" onchange="SetVariableForm(this.selectedIndex)">
 							<option value="holiday" selected>Ferie</option>
+							<option value="dayend">Skoledagens Slutt</option>
+							<option value="weekend">Helg</option>
 							<option value="newyear">Nyttår</option>
 							<option value="birthday">Bursdag</option>
 						</select>
