@@ -14,7 +14,7 @@ class Holiday {
     //Method for printing strings
     PrintStrings() {
         document.getElementById("above-text").innerHTML = this.CountdownNameString;
-        document.getElementById("done-container").innerHTML = this.CountdownFinishedString;
+        document.getElementById("done-text").innerHTML = this.CountdownFinishedString;
         window.document.title = this.CountdownNameString + " - FerieCountdown";
     }
 }
@@ -22,28 +22,37 @@ class Holiday {
 //Generate background object
 class Background {
     //Constructor
-    constructor(Type, Url, SetCCCText) {
+    constructor(Type, Data, SetCCCText) {
         this.Type = Type;
-        this.Url = Url;
+        this.Data = Data;
         this.SetCCCText = SetCCCText;
     }
 
     //Method for applying background
     SetBg() {
         if (this.Type == "static") {
-            var b = document.getElementsByTagName("body")[0];
-            b.style.backgroundImage = "url(" + this.Url + ")";
-            b.style.backgroundPosition = "center";
-            b.style.backgroundRepeat = "no-repeat";
-            b.style.backgroundAttachment = "fixed";
+            this.SetStatic(this.Data);
+        }
+        else if (this.Type == "staticcssbody") {
+            document.getElementsByTagName("head")[0].innerHTML += "<style>" + this.Data[1] + "</style>";
+            document.getElementsByTagName("body")[0].innerHTML += this.Data[2];
+            this.SetStatic(this.Data[0])
         }
         if (this.SetCCCText) {
             document.getElementById("above-text").style.color = "#ccc";
-            document.getElementById("done-container").style.color = "#ccc";
+            document.getElementById("done-text").style.color = "#ccc";
             document.getElementById("optionsbuttonfa").style.color = "#ccc";
             document.getElementById("mycdsbuttonfa").style.color = "#ccc";
             document.getElementsByTagName("head")[0].innerHTML += "<style>.flip-clock-label{color:#ccc!important}</style>";
         }
+    }
+
+    SetStatic(url) {
+        var b = document.getElementsByTagName("body")[0];
+        b.style.backgroundImage = "url(" + url + ")";
+        b.style.backgroundPosition = "center";
+        b.style.backgroundRepeat = "no-repeat";
+        b.style.backgroundAttachment = "fixed";
     }
 }
 
@@ -51,10 +60,15 @@ class Background {
 let holidays = [
 new Holiday(new Date("Oct 4, 2019 13:15:00"), "Nedtelling til høstferien", "Høstferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true), new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true)), 
 new Holiday(new Date("Dec 21, 2019 10:25:00"), "Nedtelling til juleferien", "Juleferie nå!", null, null),
-new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!", null, null),
+new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/w20/static.jpg", false), new Background("staticcssbody", ["https://static.feriecountdown.com/resources/background/w20/animbg.jpg", ".snow-container{position:absolute;height:80%;width:100%;max-width:100%;top:0;overflow:hidden;z-index:2;pointer-events:none}.snow{display:block;position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;pointer-events:none;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);-webkit-animation:snow linear infinite;animation:snow linear infinite}.snow.foreground{background-image:url(https://static.feriecountdown.com/resources/snow/snow-large.png);-webkit-animation-duration:15s;animation-duration:15s}.snow.foreground.layered{-webkit-animation-delay:7.5s;animation-delay:7.5s}.snow.middleground{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-medium.png);-webkit-animation-duration:20s;animation-duration:20s}.snow.middleground.layered{-webkit-animation-delay:10s;animation-delay:10s}.snow.background{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-small.png);-webkit-animation-duration:30s;animation-duration:30s}.snow.background.layered{-webkit-animation-delay:15s;animation-delay:15s}@-webkit-keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}@keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}",'<div class="snow-container"><div class="snow foreground"></div><div class="snow foreground layered"></div><div class="snow middleground"></div><div class="snow middleground layered"></div><div class="snow background"></div><div class="snow background layered"></div></div>'], false)),
 new Holiday(new Date("Apr 3, 2020 13:15:00"), "Nedtelling til påskeferien", "Påskeferie nå!", null, null),
 new Holiday(new Date("Jun 19, 2020 10:25:00"), "Nedtelling til sommerferien", "Sommerferie nå!", null, null)
 ];
+
+/*
+ * Autumn and winter image (c) Odd Skjæveland
+ * Animated snow css by Justin Patrick Schwinghamer on Codepen https://codepen.io/jpschwinghamer/pen/QwwbgO
+ */
 
 function findClosestHoliday() {
     let selected;
@@ -69,6 +83,61 @@ function findClosestHoliday() {
     });
     return selected
 }
+
+//get next weekend
+function getWeekend() {
+    let today = new Date();
+    let day = today.getDay();
+    switch (day) {
+        case 0:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()-2, 13, 15);
+        case 1:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+4, 13, 15);
+        case 2:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+3, 13, 15);
+        case 3:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+2, 13, 15);
+        case 4:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()+1, 13, 15);
+        case 5:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 15);
+        case 6:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate()-1, 13, 15);
+    }
+}
+
+//get weekday end
+function getDayEnd() {
+    let today = new Date();
+    let day = today.getDay();
+    switch (day) {
+        case 6:
+        case 0:
+            return 0;
+        case 1:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
+        case 2:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 15);
+        case 3:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
+        case 4:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
+        case 5:
+            return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 15);
+    }
+}
+
+//generate dayend Holiday object
+function getDayEndObj() {
+    let de = getDayEnd();
+    if (de != 0) {
+        return new Holiday(de, "Skoledagen slutter om:", "Skoledagen er slutt!", null, null);
+    }
+    else {
+        return new Holiday(new Date(0), null, "Nå er det helg!", null, null);
+    }
+}
+
 
 //birthday validation
 function bdayValiDATE(dateparam) {
@@ -94,6 +163,10 @@ function bdayValiDATE(dateparam) {
 //Init the clock
 var clock;
 $(document).ready(function() {
+
+    //Set default variables
+    let scale = 2.5;
+    let face = 'DailyCounter';
 
     // Grab the current date
     var currentDate = new Date();
@@ -139,6 +212,13 @@ $(document).ready(function() {
                     hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", null, null);
                 }
                 break;
+            case "dayend":
+                hd = getDayEndObj();
+                scale = 3.5;
+                face = "HourlyCounter";
+                break;
+            case "weekend":
+                hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", null, null);
         }
         selholiday = hd;
     }
@@ -182,10 +262,10 @@ $(document).ready(function() {
     }
     // Instantiate a coutdown FlipClock
     clock = $('.clock').FlipClock(diff, {
-        clockFace: 'DailyCounter',
+        clockFace: face,
         countdown: true,
         language: 'no',
-        responsiveScale: 2.5,
+        responsiveScale: scale,
         stop: function() {
             document.getElementById("main-container").style.display = "none";
             document.getElementById("done-container").style.display = "initial";
