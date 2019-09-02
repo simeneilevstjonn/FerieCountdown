@@ -27,3 +27,16 @@ function SetVariableForm(type) {
             break;
     }
 }
+
+class Options {
+    constructor(cdtype) {
+        if (cdtype == "w") {
+            document.getElementById("dayendoption").innerHTML("Arbeidsdagens Slutt");
+        }
+        this.cdtype = cdtype;
+    }
+    
+    //Holiday dates
+    a19 = new Date("Oct 4, 2019 13:15:00");
+
+}
