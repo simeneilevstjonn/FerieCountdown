@@ -164,6 +164,10 @@ function bdayValiDATE(dateparam) {
 var clock;
 $(document).ready(function() {
 
+    //Set default variables
+    let scale = 2.5;
+    let face = 'DailyCounter';
+
     // Grab the current date
     var currentDate = new Date();
 
@@ -210,6 +214,8 @@ $(document).ready(function() {
                 break;
             case "dayend":
                 hd = getDayEndObj();
+                scale = 3.5;
+                face = "HourlyCounter";
                 break;
             case "weekend":
                 hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", null, null);
@@ -256,15 +262,14 @@ $(document).ready(function() {
     }
     // Instantiate a coutdown FlipClock
     clock = $('.clock').FlipClock(diff, {
-        clockFace: 'DailyCounter',
+        clockFace: face,
         countdown: true,
         language: 'no',
-        responsiveScale: 2.5,
+        responsiveScale: scale,
         stop: function() {
             document.getElementById("main-container").style.display = "none";
             document.getElementById("done-container").style.display = "initial";
         },
     });
 });
-
 
