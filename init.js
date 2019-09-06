@@ -68,6 +68,7 @@ new Holiday(new Date("Jun 19, 2020 10:25:00"), "Nedtelling til sommerferien", "S
 /*
  * Autumn and winter image (c) Odd Skjæveland
  * Animated snow css by Justin Patrick Schwinghamer on Codepen https://codepen.io/jpschwinghamer/pen/QwwbgO
+ * Classroom by archideaphoto on Adobe stock
  */
 
 function findClosestHoliday() {
@@ -131,10 +132,10 @@ function getDayEnd() {
 function getDayEndObj() {
     let de = getDayEnd();
     if (de != 0) {
-        return new Holiday(de, "Skoledagen slutter om:", "Skoledagen er slutt!", null, null);
+        return new Holiday(de, "Skoledagen slutter om:", "Skoledagen er slutt!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
     }
     else {
-        return new Holiday(new Date(0), null, "Nå er det helg!", null, null);
+        return new Holiday(new Date(0), null, "Nå er det helg!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
     }
 }
 
@@ -204,7 +205,7 @@ $(document).ready(function() {
         switch (urlParams.get("type")) {
             case "Nyttår":
             case "newyear":
-                hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "2020 nå!", null, null);
+                hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "2020 nå!", new Background("static", "https://static.feriecountdown.com/resources/background/ny/static.png", true), null);
                 break;  
             case "Bursdag":
             case "birthday":
@@ -218,7 +219,7 @@ $(document).ready(function() {
                 face = "HourlyCounter";
                 break;
             case "weekend":
-                hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", null, null);
+                hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
         }
         selholiday = hd;
     }
