@@ -23,7 +23,7 @@ function SetVariableForm(type) {
             v.innerHTML = "";
             break;
         case 4:
-            v.innerHTML = '<div class="form-group"><label for="personname">Navn på person med bursdag</label><input class="form-control" type="text" name="personname" id="personname" placeholder="John Doe"></div><div class="form-group"><label for="dateselector">Bursdagsdato</label><input class="form-control" type="date" name="date" id="dateselector"></div>';
+            v.innerHTML = '<div class="form-group"><label for="personname">Navn på person med bursdag</label><input class="form-control" type="text" name="personname" id="personname" placeholder="Ola Nordmann"></div><div class="form-group"><label for="dateselector">Bursdagsdato</label><input class="form-control" type="date" name="date" id="dateselector"></div>';
             break;
     }
 }
