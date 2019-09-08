@@ -58,17 +58,21 @@ class Background {
 
 //Generate holiday objects
 let holidays = [
-new Holiday(new Date("Oct 4, 2019 13:15:00"), "Nedtelling til høstferien", "Høstferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true), new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true)), 
-new Holiday(new Date("Dec 21, 2019 10:25:00"), "Nedtelling til juleferien", "Juleferie nå!", null, null),
-new Holiday(new Date("Feb 21, 2020 13:15:00"), "Nedtelling til vinterferien", "Vinterferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/w20/static.jpg", false), new Background("staticcssbody", ["https://static.feriecountdown.com/resources/background/w20/animbg.jpg", ".snow-container{position:absolute;height:80%;width:100%;max-width:100%;top:0;overflow:hidden;z-index:2;pointer-events:none}.snow{display:block;position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;pointer-events:none;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);-webkit-animation:snow linear infinite;animation:snow linear infinite}.snow.foreground{background-image:url(https://static.feriecountdown.com/resources/snow/snow-large.png);-webkit-animation-duration:15s;animation-duration:15s}.snow.foreground.layered{-webkit-animation-delay:7.5s;animation-delay:7.5s}.snow.middleground{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-medium.png);-webkit-animation-duration:20s;animation-duration:20s}.snow.middleground.layered{-webkit-animation-delay:10s;animation-delay:10s}.snow.background{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-small.png);-webkit-animation-duration:30s;animation-duration:30s}.snow.background.layered{-webkit-animation-delay:15s;animation-delay:15s}@-webkit-keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}@keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}",'<div class="snow-container"><div class="snow foreground"></div><div class="snow foreground layered"></div><div class="snow middleground"></div><div class="snow middleground layered"></div><div class="snow background"></div><div class="snow background layered"></div></div>'], false)),
-new Holiday(new Date("Apr 3, 2020 13:15:00"), "Nedtelling til påskeferien", "Påskeferie nå!", null, null),
-new Holiday(new Date("Jun 19, 2020 10:25:00"), "Nedtelling til sommerferien", "Sommerferie nå!", null, null)
+new Holiday(new Date("Oct 4, 2019 11:15:00 UTC"), "Nedtelling til høstferien", "Høstferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/a19/static.jpg", true), null), 
+new Holiday(new Date("Dec 21, 2019 09:25:00 UTC"), "Nedtelling til juleferien", "Juleferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/c19/static.jpg", false), new Background("staticcssbody", ["https://static.feriecountdown.com/resources/background/c19/static.jpg", ".snow-container{position:absolute;height:80%;width:100%;max-width:100%;top:0;overflow:hidden;z-index:2;pointer-events:none}.snow{display:block;position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;pointer-events:none;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);-webkit-animation:snow linear infinite;animation:snow linear infinite}.snow.foreground{background-image:url(https://static.feriecountdown.com/resources/snow/snow-large.png);-webkit-animation-duration:15s;animation-duration:15s}.snow.foreground.layered{-webkit-animation-delay:7.5s;animation-delay:7.5s}.snow.middleground{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-medium.png);-webkit-animation-duration:20s;animation-duration:20s}.snow.middleground.layered{-webkit-animation-delay:10s;animation-delay:10s}.snow.background{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-small.png);-webkit-animation-duration:30s;animation-duration:30s}.snow.background.layered{-webkit-animation-delay:15s;animation-delay:15s}@-webkit-keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}@keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}",'<div class="snow-container"><div class="snow foreground"></div><div class="snow foreground layered"></div><div class="snow middleground"></div><div class="snow middleground layered"></div><div class="snow background"></div><div class="snow background layered"></div></div>'], false)),
+new Holiday(new Date("Feb 21, 2020 12:15:00 UTC"), "Nedtelling til vinterferien", "Vinterferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/w20/static.jpg", false), new Background("staticcssbody", ["https://static.feriecountdown.com/resources/background/w20/animbg.jpg", ".snow-container{position:absolute;height:80%;width:100%;max-width:100%;top:0;overflow:hidden;z-index:2;pointer-events:none}.snow{display:block;position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;pointer-events:none;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);-webkit-animation:snow linear infinite;animation:snow linear infinite}.snow.foreground{background-image:url(https://static.feriecountdown.com/resources/snow/snow-large.png);-webkit-animation-duration:15s;animation-duration:15s}.snow.foreground.layered{-webkit-animation-delay:7.5s;animation-delay:7.5s}.snow.middleground{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-medium.png);-webkit-animation-duration:20s;animation-duration:20s}.snow.middleground.layered{-webkit-animation-delay:10s;animation-delay:10s}.snow.background{background-image:image-url(https://static.feriecountdown.com/resources/snow/snow-small.png);-webkit-animation-duration:30s;animation-duration:30s}.snow.background.layered{-webkit-animation-delay:15s;animation-delay:15s}@-webkit-keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}@keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(15%,100%,0);transform:translate3d(15%,100%,0)}}",'<div class="snow-container"><div class="snow foreground"></div><div class="snow foreground layered"></div><div class="snow middleground"></div><div class="snow middleground layered"></div><div class="snow background"></div><div class="snow background layered"></div></div>'], false)),
+new Holiday(new Date("Apr 3, 2020 11:15:00 UTC"), "Nedtelling til påskeferien", "Påskeferie nå!", new Background("static", "https://static.feriecountdown.com/resources/background/e20/static.jpg", false), null),
+new Holiday(new Date("Jun 19, 2020 08:25:00 UTC"), "Nedtelling til sommerferien", "Sommerferie nå!", null, null)
 ];
 
 /*
  * Autumn and winter image (c) Odd Skjæveland
  * Animated snow css by Justin Patrick Schwinghamer on Codepen https://codepen.io/jpschwinghamer/pen/QwwbgO
  * Classroom by archideaphoto on Adobe stock
+ * Fireworks by totojang1977 on Adobe Stock
+ * Birthday Cake by Studio Romantic on Adobe Stock
+ * Christmas Tree by Mari79 on Adobe Stock
+ * Easter Image by Romolo Tavani on Adobe Stock
  */
 
 function findClosestHoliday() {
@@ -112,9 +116,6 @@ function getDayEnd() {
     let today = new Date();
     let day = today.getDay();
     switch (day) {
-        case 6:
-        case 0:
-            return 0;
         case 1:
             return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
         case 2:
@@ -125,6 +126,8 @@ function getDayEnd() {
             return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 20);
         case 5:
             return new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 15);
+        default:
+            return 0;
     }
 }
 
@@ -132,10 +135,10 @@ function getDayEnd() {
 function getDayEndObj() {
     let de = getDayEnd();
     if (de != 0) {
-        return new Holiday(de, "Skoledagen slutter om:", "Skoledagen er slutt!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
+        return new Holiday(de, "Skoledagen slutter om:", "Skoledagen er slutt!", new Background("static", "https://static.feriecountdown.com/resources/background/de/static.jpg", false), null);
     }
     else {
-        return new Holiday(new Date(0), null, "Nå er det helg!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
+        return new Holiday(new Date(0), null, "Nå er det helg!", new Background("static", "https://static.feriecountdown.com/resources/background/de/static.jpg", false), null);
     }
 }
 
@@ -158,7 +161,6 @@ function bdayValiDATE(dateparam) {
         }
     }
 }
-
 
 
 //Init the clock
@@ -210,7 +212,7 @@ $(document).ready(function() {
             case "Bursdag":
             case "birthday":
                 if (urlParams.has("personname") && urlParams.has("date")) {
-                    hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", null, null);
+                    hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
                 }
                 break;
             case "dayend":
@@ -219,7 +221,7 @@ $(document).ready(function() {
                 face = "HourlyCounter";
                 break;
             case "weekend":
-                hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
+                hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", new Background("static", "https://static.feriecountdown.com/resources/background/de/static.jpg", false), null);
         }
         selholiday = hd;
     }
@@ -237,6 +239,12 @@ $(document).ready(function() {
             }
             break;
         case "plain":
+            break;
+        case "custom": 
+            if (urlParams.has("url")) {
+                let cbg = new Background("static", urlParams.get("url"), urlParams.has("ccc"));
+                cbg.SetBg();
+            }
             break;
         default:
             if (selholiday.AnimatedBg != null) {
@@ -273,5 +281,3 @@ $(document).ready(function() {
         },
     });
 });
-
-
