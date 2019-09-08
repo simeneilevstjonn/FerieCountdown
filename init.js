@@ -212,7 +212,11 @@ $(document).ready(function() {
             case "Bursdag":
             case "birthday":
                 if (urlParams.has("personname") && urlParams.has("date")) {
-                    hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + urlParams.get("personname") +"s bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
+                    let names = urlParams.get("personname");
+                    if (names.charAt(names.length-1).toLowerCase() != "s") {
+                        names += "s"
+                    }
+                    hd = new Holiday(bdayValiDATE(new Date(urlParams.get("date")).getTime()), "Nedtelling til " + names +" bursdag", "Gratulerer med dagen, " + urlParams.get("personname") + "!", new Background("static", "https://static.feriecountdown.com/resources/background/bd/static.jpg", false), null);
                 }
                 break;
             case "dayend":
