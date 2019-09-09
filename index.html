@@ -24,30 +24,6 @@
 		</div>
 		<div id="done-container" class="valign" style="display: none;"><p id="done-text"></p></div>
 
-		<div class="left mycdscontainer">
-			<div class="mycds" id="mycds" style="display:none">
-				<h2>
-					Mine Countdowner
-					<button onclick="ToggleMyCDS()" class="button"><i class="fas fa-times"></i></button>
-				</h2>
-				<br>
-				<div class="form-group">
-					<label for="mcdtitle" style="font-size: 18px">Navn til lagring</label>
-					<input class="form-control" type="text" id="mcdtitle" placeholder="Navn på Countdown">
-				</div>
-				<div style="text-align: center">
-					<button onclick="AddMCD()" class="button addbutton">Legg til</button>
-				</div>
-				
-				
-				<br>
-				<ul id="mcdslist" class="list-group">
-					
-				</ul>
-			</div>
-			<button class="button optionsbutton" id="mycdsbutton" onclick="ToggleMyCDS()"><i class="fas fa-angle-right" id="mycdsbuttonfa"></i></button>
-		</div>
-
 		<div class="bottommiddle optionscontainer">
 			<button class="button optionsbutton" id="optionsbutton" onclick="ToggleOptions()"><i class="fas fa-angle-up" id="optionsbuttonfa"></i></button>
 
@@ -90,7 +66,25 @@
 				</form>
 			</div>
 		</div>
+
+		<div class="left mycdscontainer">
+			<div class="mycds" id="mycds" style="display:none">
+				<h2>
+					Mine Countdowner
+					<button onclick="ToggleMyCDS()" class="button"><i class="fas fa-times"></i></button>
+				</h2>
+				<br>
+				<div class="form-group">
+					<label for="mcdtitle" style="font-size: 18px">Navn til lagring</label>
+					<input class="form-control" type="text" id="mcdtitle" placeholder="Navn på Countdown">
+				</div>
+				<div style="text-align: center">
+					<button onclick="AddMCD()" class="button addbutton">Legg til</button>
+				</div>
+				<br>
+				<ul id="mcdslist" class="list-group"></ul>
+			</div>
+			<button class="button optionsbutton" id="mycdsbutton" onclick="ToggleMyCDS()"><i class="fas fa-angle-right" id="mycdsbuttonfa"></i></button>
+		</div>
 	</body>
 </html>
-
-
