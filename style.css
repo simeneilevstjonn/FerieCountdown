@@ -146,6 +146,7 @@ label {
     }
     .optionscontainer {
         background-color: #333;
+        z-index: 5!important;
     }
     #above-text {
         font-size: 350%!important;
@@ -157,6 +158,9 @@ label {
         transform: scale(0.9)!important;
         margin-left: auto!important;
         margin-right: auto!important;
+    }
+    .optionsbutton {
+       width: 100%;
     }
 }
 
