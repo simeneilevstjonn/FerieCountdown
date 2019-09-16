@@ -226,6 +226,9 @@ $(document).ready(function() {
                 break;
             case "weekend":
                 hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", new Background("static", "https://static.feriecountdown.com/resources/background/de/static.jpg", false), null);
+                break;
+            case "nationalday":
+                hd = new Holiday(new Date("May 1, 2020 00:00:00"), "Nedtelling til 17. mai", "17. mai nå!", null, null);
         }
         selholiday = hd;
     }
