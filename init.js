@@ -66,7 +66,7 @@ new Holiday(new Date("Jun 19, 2020 08:25:00 UTC"), "Nedtelling til sommerferien"
 ];
 
 /*
- * Autumn and winter image (c) Odd Skjæveland
+ * Autumn, winter and summer image (c) Odd Skjæveland
  * Animated snow css by Justin Patrick Schwinghamer on Codepen https://codepen.io/jpschwinghamer/pen/QwwbgO
  * Classroom by archideaphoto on Adobe stock
  * Fireworks by totojang1977 on Adobe Stock
