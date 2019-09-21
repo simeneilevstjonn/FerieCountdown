@@ -221,14 +221,16 @@ $(document).ready(function() {
                 break;
             case "dayend":
                 hd = getDayEndObj();
-                scale = 3.5;
-                face = "HourlyCounter";
                 break;
             case "weekend":
                 hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", new Background("static", "https://static.feriecountdown.com/resources/background/de/static.jpg", false), null);
                 break;
             case "nationalday":
-                hd = new Holiday(new Date("May 1, 2020 00:00:00"), "Nedtelling til 17. mai", "17. mai nå!", null, null);
+                hd = new Holiday(new Date("May 17, 2020 00:00:00 +0200"), "Nedtelling til 17. mai", "17. mai nå!", null, null);
+                break;
+            case "halloween":
+                hd = new Holiday(new Date("2019-10-31T00:00"), "Nedtelling til halloween", "Halloween i dag!", new Background("static", "https://static.feriecountdown.com/resources/background/hw/halloween.jpg", true), null);
+                break;
         }
         selholiday = hd;
     }
@@ -270,6 +272,12 @@ $(document).ready(function() {
 
     // Calculate the difference in seconds between the future and current date
     var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+    //Check if countdown is less than 24 hrs
+    if (diff < 24 * 60**2) {
+        scale = 3.5;
+        face = "HourlyCounter";
+    }
 
     //Display a message when the countdown has finished
     if (diff <= 0) {
