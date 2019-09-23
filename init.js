@@ -1,4 +1,4 @@
-//Init.js V 21.08.19-1
+//Init.js v905
 //Author: Simen Eilevstjønn
 //Generate a holiday class
 class Holiday {
@@ -66,7 +66,7 @@ new Holiday(new Date("Jun 19, 2020 08:25:00 UTC"), "Nedtelling til sommerferien"
 ];
 
 /*
- * Autumn and winter image (c) Odd Skjæveland
+ * Autumn, winter and summer image (c) Odd Skjæveland
  * Animated snow css by Justin Patrick Schwinghamer on Codepen https://codepen.io/jpschwinghamer/pen/QwwbgO
  * Classroom by archideaphoto on Adobe stock
  * Fireworks by totojang1977 on Adobe Stock
@@ -207,7 +207,7 @@ $(document).ready(function() {
         switch (urlParams.get("type")) {
             case "Nyttår":
             case "newyear":
-                hd = new Holiday(new Date("Jan 1, 2020 00:00:00"), "Nedtelling til nyttår", "2020 nå!", new Background("static", "https://static.feriecountdown.com/resources/background/ny/static.png", true), null);
+                hd = new Holiday(bdayValiDATE(new Date("Jan 1, 2020 00:00:00").getTime()), "Nedtelling til nyttår", "2020 nå!", new Background("static", "https://static.feriecountdown.com/resources/background/ny/static.png", true), null);
                 break;  
             case "Bursdag":
             case "birthday":
@@ -221,11 +221,16 @@ $(document).ready(function() {
                 break;
             case "dayend":
                 hd = getDayEndObj();
-                scale = 3.5;
-                face = "HourlyCounter";
                 break;
             case "weekend":
                 hd = new Holiday(getWeekend(), "Nedtelling til helg", "Helg nå!", new Background("static", "https://static.feriecountdown.com/resources/background/de/static.jpg", false), null);
+                break;
+            case "nationalday":
+                hd = new Holiday(bdayValiDATE(new Date("May 17, 2020 00:00:00 +0200").getTime()), "Nedtelling til 17. mai", "17. mai nå!", new Background("static", "https://static.feriecountdown.com/resources/background/17may.jpg", true), null);
+                break;
+            case "halloween":
+                hd = new Holiday(bdayValiDATE(new Date("2019-10-31T00:00").getTime()), "Nedtelling til halloween", "Halloween i dag!", new Background("static", "https://static.feriecountdown.com/resources/background/hw/halloween.jpg", true), null);
+                break;
         }
         selholiday = hd;
     }
@@ -267,6 +272,12 @@ $(document).ready(function() {
 
     // Calculate the difference in seconds between the future and current date
     var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+    //Check if countdown is less than 24 hrs
+    if (diff < 24 * 60**2) {
+        scale = 3.5;
+        face = "HourlyCounter";
+    }
 
     //Display a message when the countdown has finished
     if (diff <= 0) {
