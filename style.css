@@ -143,6 +143,9 @@ label {
 .form-group {
     text-align: left;
 }
+.links {
+    margin-top: 1em;
+}
 @media (max-width: 600px) {
     .mobile, .mycdscontainer {
         display:block!important;
