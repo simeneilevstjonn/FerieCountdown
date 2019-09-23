@@ -9,8 +9,8 @@
 		<link rel="icon" href="favicon.ico">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="flipclock.js"></script>
-		<script src="options2.js"></script>
 		<script src="init.js"></script>
+		<script src="options2.js"></script>
 		<script src="mycountdowns.js"></script>
 
 
@@ -18,7 +18,7 @@
 		<title>FerieCountdown</title>
 	</head>
 	<body>
-		<!--[if lt IE 10]>
+		<!--[if lt IE 12]>
 			<h1>Unsupported browser</h1>
 			<p>Internet Explorer is not supported by FerieCountdown.com<br>
 				it is reccomended that you download <a href="https://www.google.com/chrome/" rel="noopener" target="_blank">Google Chrome</a> or <a href="https://www.mozilla.org/en-US/firefox/new/" rel="noopener" target="_blank">Mozilla Firefox</a></p>
@@ -35,7 +35,7 @@
 			<div id="options" style="display: none">
 				<button onclick="ToggleOptions()" class="button optionsxbutton"><i class="fas fa-times"></i></button>
 				
-				<form method="GET" name="options">
+				<form method="GET" name="options" id="optionsform">
 					<div class="form-group">
 						<label for="typeSelect">Nedtellingstype</label>
 						<select class="form-control" id="typeSelect" name="type" onchange="SetVariableForm(this.selectedIndex)">
@@ -69,8 +69,8 @@
 							<option value="plain">Hvit bakgrunn</option>
 						</select>
 					</div>
-					<input type="submit" value="Lagre Innstillinger" class="button submitbutton">
 				</form>
+				<input type="submit" value="Lagre Innstillinger" class="button submitbutton" onclick="sender()">
 			</div>
 		</div>
 

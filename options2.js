@@ -1,4 +1,28 @@
+//Set options to current setting
+var urlParams = new URLSearchParams(window.location.search);
+
+function setOpts() {
+    if (urlParams.has("type")) {
+        document.getElementById("typeSelect").value = urlParams.get("type");
+        SetVariableForm(document.getElementById("typeSelect").selectedIndex);
+    }
+    if (urlParams.has("bg")) {
+        document.getElementById("bgSelect").value = urlParams.get("bg");
+    }
+    if (urlParams.has("holiday")) {
+        document.getElementById("holidaySelect").value = urlParams.get("holiday");
+    }
+    else if (document.getElementById("typeSelect").selectedIndex == 0) {
+        document.getElementById("holidaySelect").selectedIndex = 0;
+    }
+    if (urlParams.has("personname") && urlParams.has("date")) {
+        document.getElementById("personname").value = urlParams.get("personname");
+        document.getElementById("dateselector").value = urlParams.get("date");
+    }
+}
+
 function ToggleOptions() {
+    setOpts();
     var o = document.getElementById("options");
     var fa = document.getElementById("optionsbuttonfa");
     if (o.style.display == "none") {
@@ -24,4 +48,21 @@ function SetVariableForm(type) {
             v.innerHTML = "";
             break;
     }
+}
+
+function sender() {
+    //Check if values are default
+    if (document.getElementById("typeSelect").value == "holiday") {
+        document.getElementById("typeSelect").remove();
+    }
+    try {
+        if (document.getElementById("holidaySelect").value == "auto") {
+            document.getElementById("holidaySelect").remove();
+        }
+    }
+    catch {}
+    if (document.getElementById("bgSelect").value == "animated") {
+        document.getElementById("bgSelect").remove();
+    }
+    document.getElementById("optionsform").submit();
 }
