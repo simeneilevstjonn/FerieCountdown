@@ -1,7 +1,7 @@
 # FerieCountdown
 
 ## Discontinued
-Se [new repo](https://github.com/simeneilevstjonn/FerieCountdownAspNet)
+See [new repo](https://github.com/simeneilevstjonn/FerieCountdownAspNet)
 
 This is a contdown for school holidays in Sandnes, Norway based on objectivehtml's [FlipClock](https://github.com/objectivehtml/FlipClock)
 It now supports both countdowns to the new year and to birthdays. 
